@@ -157,10 +157,10 @@ The following illustrates applying configuration parameters to Packetbeat instan
     beats_use_repository: "true"
 ```
 
-he following illustrates applying configuration parameters to Metricbeat with Jolokia module configuration.
+he following illustrates applying configuration parameters to Metricbeat with Jolokia module configuration. (localhost:9999) - url for jolokia
 
 ```yaml
-- name: Example playbook for installing packetbeat
+- name: Example playbook for installing metricbeat
   hosts: localhost
   roles:
     - { role: ansible-beats, beat: "metricbeat",
