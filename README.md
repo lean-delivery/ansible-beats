@@ -161,7 +161,7 @@ he following illustrates applying configuration parameters to Metricbeat with Jo
 
 ```yaml
 - name: Example playbook for installing packetbeat
-  hosts: lolkek
+  hosts: localhost
   roles:
   - role: ansible-beats
   become: true
