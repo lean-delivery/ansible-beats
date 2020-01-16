@@ -160,38 +160,33 @@ The following illustrates applying configuration parameters to Packetbeat instan
 he following illustrates applying configuration parameters to Metricbeat with Jolokia module configuration. (localhost:9999) - url for jolokia
 
 ```yaml
-- name: Example playbook for installing metricbeat
-  hosts: localhost
+- name: Example playbook for installing packetbeat
+  hosts: lolkek
   roles:
-    - { role: ansible-beats, beat: "metricbeat",
-        beat_conf: {
-                "metricbeat.config.modules": {
-                "hosts": ['localhost:9999'],
-                "http_method": POST,
-                "jmx.mappings": {
-                    "attributes": [
-                        {"attr": "HeapMemoryUsage",                      
-                        "field": "memory.heap_usage"},
-                        {"attr": "NonHeapMemoryUsage",
-                        "field": "memory.non_heap_usage"}
-                      ],
-                      "mbean": "java.lang:type=Memory"
-                },
-                "metricsets": [jmx],
-                "module": "jolokia",
-                "namespace": "metrics",
-                "path": "/jolokia/?ignoreErrors=true&canonicalNaming=false",
-                "period": "10s",
-           }
-        },
-        output_conf: {
-          "elasticsearch": {
-            "hosts": ["localhost:9200"]
-          }
-        }
-    }
+  - role: ansible-beats
+  become: true
   vars:
-    beats_use_repository: "true"
+    beat: metricbeat
+    beats_use_repository: true
+    beat_conf:
+      metricbeat.config.modules:
+        hosts: ['localhost:9999']
+        http_method: POST
+        jmx.mappings:
+          attributes:
+            - attr: "HeapMemoryUsage"
+              field: "memory.heap_usage"
+            - attr: "NonHeapMemoryUsage"
+              field: "memory.non_heap_usage"
+          mbean: "java.lang:type=Memory"
+        metricsets: jmx
+        module: jolokia
+        namespace: metrics
+        path: "/jolokia/?ignoreErrors=true&canonicalNaming=false"
+        period: "10s"
+    output_conf:
+      elasticsearch:
+        hosts: ["localhost:9200"]
 ```
 
 ### Additional Configuration
