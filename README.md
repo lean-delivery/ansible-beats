@@ -1,5 +1,6 @@
 # ansible-beats
 [![Build Status](https://img.shields.io/jenkins/s/https/devops-ci.elastic.co/job/elastic+ansible-beats+master.svg)](https://devops-ci.elastic.co/job/elastic+ansible-beats+master/)
+[![pipeline status](https://gitlab.com/lean-delivery/ansible-beats/badges/master/pipeline.svg)](https://gitlab.com/lean-delivery/ansible-beats/-/commits/master)
 [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-elastic.beats-blue.svg)](https://galaxy.ansible.com/elastic/beats/)
 
 This role provides a generic means of installing Elastic supported Beats
